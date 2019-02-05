@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Sensor de humedad y temperatura con Arduino. Segunda parte: firmware | la ciudadela</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Sensor de humedad y temperatura con Arduino. Segunda parte: firmware" />
+<meta name="author" content="peancor" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="En un artículo anterior se describió el hardware. En este artículo nos centraremos en el programa que se ejecutará en el Arduino, también llamado firmware. El programa de Arduino que utilizaremos para obtener la medición de temperatura y humedad del sensor SHT15 proporcionará un sencillo interface a través del puerto serie. Dicho programa está basado en el código de Hobby robotics, aunque ha sido fuertemente modificado para adaptarse a nuestras necesidades. En el principio del programa se definen las constantes que representan a cada uno de los comandos que utilizaremos del sensor, así como a los pines a los que están conectadas las líneas DATA y SCK del sensor. La función shiftIn nos permite leer un numero arbitrario de bits del sensor. La función sendCommand contiene toda la lógica que envía un comando al sensor SHT15 siguiendo el protocolo descrito en el artículo anterior. Después de enviar un comando es necesario esperar unas cuantas decenas de milisegundos a que se realice la medida. Una vez que la medida se ha completado, el sensor avisará poniendo la línea DATA a 0. El esperar el resultado de la medida, es el objetivo de la siguiente función. Por último, la función getResult obtiene el resultado de la medida del sensor siguiendo el protocolo descrito en el artículo anterior. Dicha medida se obtiene como un entero de 16 bits que será necesario procesar para obtener la medida en las unidades de humedad y temperatura. Ese es el objetivo de las siguientes funciones printTemperature y printHumidity; envían el comando correspondiente al sensor obteniendo el resultado como un entero de 16 bits, convierten dicho entero a un valor de temperatura en grados centígrados y a un valor de humedad relativa, imprimiendo dichos valores a través del puerto serie. La última parte del sketch de arduino es la configuración que simplemente establecerá el pin SCK como de salida y configurará el puerto serie a 9600 bps. y el bucle principal que define una serie de comandos para obtener la medición de la temperatura y la humedad. El comando que utilizaremos en artículos posteriores es el comando ‘g’. Al recibir una ‘g’ en ASCII por el puerto serie, el programa realizara mediciones de la temperatura y de la humedad y las imprimirá por el puerto serie separadas por el carácter ‘ ’ y finalizadas por ‘rn’. La implementación de dicho programa en el Arduino ya nos permite obtener los valores de temperatura y humedad utilizando un programa de terminal tal y como se muestra en la figura siguiente. En un artículo posterior utilizaremos esta base para construir un gadget para el escritorio de Windows 7." />
+<meta property="og:description" content="En un artículo anterior se describió el hardware. En este artículo nos centraremos en el programa que se ejecutará en el Arduino, también llamado firmware. El programa de Arduino que utilizaremos para obtener la medición de temperatura y humedad del sensor SHT15 proporcionará un sencillo interface a través del puerto serie. Dicho programa está basado en el código de Hobby robotics, aunque ha sido fuertemente modificado para adaptarse a nuestras necesidades. En el principio del programa se definen las constantes que representan a cada uno de los comandos que utilizaremos del sensor, así como a los pines a los que están conectadas las líneas DATA y SCK del sensor. La función shiftIn nos permite leer un numero arbitrario de bits del sensor. La función sendCommand contiene toda la lógica que envía un comando al sensor SHT15 siguiendo el protocolo descrito en el artículo anterior. Después de enviar un comando es necesario esperar unas cuantas decenas de milisegundos a que se realice la medida. Una vez que la medida se ha completado, el sensor avisará poniendo la línea DATA a 0. El esperar el resultado de la medida, es el objetivo de la siguiente función. Por último, la función getResult obtiene el resultado de la medida del sensor siguiendo el protocolo descrito en el artículo anterior. Dicha medida se obtiene como un entero de 16 bits que será necesario procesar para obtener la medida en las unidades de humedad y temperatura. Ese es el objetivo de las siguientes funciones printTemperature y printHumidity; envían el comando correspondiente al sensor obteniendo el resultado como un entero de 16 bits, convierten dicho entero a un valor de temperatura en grados centígrados y a un valor de humedad relativa, imprimiendo dichos valores a través del puerto serie. La última parte del sketch de arduino es la configuración que simplemente establecerá el pin SCK como de salida y configurará el puerto serie a 9600 bps. y el bucle principal que define una serie de comandos para obtener la medición de la temperatura y la humedad. El comando que utilizaremos en artículos posteriores es el comando ‘g’. Al recibir una ‘g’ en ASCII por el puerto serie, el programa realizara mediciones de la temperatura y de la humedad y las imprimirá por el puerto serie separadas por el carácter ‘ ’ y finalizadas por ‘rn’. La implementación de dicho programa en el Arduino ya nos permite obtener los valores de temperatura y humedad utilizando un programa de terminal tal y como se muestra en la figura siguiente. En un artículo posterior utilizaremos esta base para construir un gadget para el escritorio de Windows 7." />
+<link rel="canonical" href="http://localhost:4000/2010/04/03/sensor-humedad-temperatura-arduino-2.html" />
+<meta property="og:url" content="http://localhost:4000/2010/04/03/sensor-humedad-temperatura-arduino-2.html" />
+<meta property="og:site_name" content="la ciudadela" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2010-04-03T00:00:00+02:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2010/04/03/sensor-humedad-temperatura-arduino-2.html"},"author":{"@type":"Person","name":"peancor"},"@type":"BlogPosting","url":"http://localhost:4000/2010/04/03/sensor-humedad-temperatura-arduino-2.html","headline":"Sensor de humedad y temperatura con Arduino. Segunda parte: firmware","dateModified":"2010-04-03T00:00:00+02:00","datePublished":"2010-04-03T00:00:00+02:00","description":"En un artículo anterior se describió el hardware. En este artículo nos centraremos en el programa que se ejecutará en el Arduino, también llamado firmware. El programa de Arduino que utilizaremos para obtener la medición de temperatura y humedad del sensor SHT15 proporcionará un sencillo interface a través del puerto serie. Dicho programa está basado en el código de Hobby robotics, aunque ha sido fuertemente modificado para adaptarse a nuestras necesidades. En el principio del programa se definen las constantes que representan a cada uno de los comandos que utilizaremos del sensor, así como a los pines a los que están conectadas las líneas DATA y SCK del sensor. La función shiftIn nos permite leer un numero arbitrario de bits del sensor. La función sendCommand contiene toda la lógica que envía un comando al sensor SHT15 siguiendo el protocolo descrito en el artículo anterior. Después de enviar un comando es necesario esperar unas cuantas decenas de milisegundos a que se realice la medida. Una vez que la medida se ha completado, el sensor avisará poniendo la línea DATA a 0. El esperar el resultado de la medida, es el objetivo de la siguiente función. Por último, la función getResult obtiene el resultado de la medida del sensor siguiendo el protocolo descrito en el artículo anterior. Dicha medida se obtiene como un entero de 16 bits que será necesario procesar para obtener la medida en las unidades de humedad y temperatura. Ese es el objetivo de las siguientes funciones printTemperature y printHumidity; envían el comando correspondiente al sensor obteniendo el resultado como un entero de 16 bits, convierten dicho entero a un valor de temperatura en grados centígrados y a un valor de humedad relativa, imprimiendo dichos valores a través del puerto serie. La última parte del sketch de arduino es la configuración que simplemente establecerá el pin SCK como de salida y configurará el puerto serie a 9600 bps. y el bucle principal que define una serie de comandos para obtener la medición de la temperatura y la humedad. El comando que utilizaremos en artículos posteriores es el comando ‘g’. Al recibir una ‘g’ en ASCII por el puerto serie, el programa realizara mediciones de la temperatura y de la humedad y las imprimirá por el puerto serie separadas por el carácter ‘ ’ y finalizadas por ‘rn’. La implementación de dicho programa en el Arduino ya nos permite obtener los valores de temperatura y humedad utilizando un programa de terminal tal y como se muestra en la figura siguiente. En un artículo posterior utilizaremos esta base para construir un gadget para el escritorio de Windows 7.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="la ciudadela" /><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">la ciudadela</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Sensor de humedad y temperatura con Arduino. Segunda parte: firmware</h1>
+  </header>
+
+  <div class="post-content">
+    <p>En un <a href="http://www.laciudadela.net/content/2010-03-19/sensor-de-humedad-y-temperatura-con-arduino-primera-parte-el-hardware" target="_blank">artículo anterior se describió el hardware</a>. En este artículo nos centraremos en el programa que se ejecutará en el Arduino, también llamado <em>firmware</em>.</p>
+
+<p>El programa de Arduino que utilizaremos para obtener la medición de temperatura y humedad del sensor SHT15 proporcionará un sencillo interface a través del puerto serie. Dicho programa está basado en el código de <a href="http://www.glacialwanderer.com/hobbyrobotics/?p=5" target="_blank">Hobby robotics</a>, aunque ha sido fuertemente modificado para adaptarse a nuestras necesidades.</p>
+
+<p>En el principio del programa se definen las constantes que representan a cada uno de los comandos que utilizaremos del sensor, así como a los pines a los que están conectadas las líneas DATA y SCK del sensor. La función <em>shiftIn</em> nos permite leer un numero arbitrario de bits del sensor.</p>
+
+<p><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - constantes y helpers" src="/images/07-11/image_3.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - constantes y helpers" width="437" height="348" border="0" /></p>
+
+<p>La función <em>sendCommand</em> contiene toda la lógica que envía un comando al sensor SHT15 siguiendo el protocolo descrito en el artículo anterior.</p>
+
+<p><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - envío de comandos" src="/images/07-11/image_8_0.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - envío de comandos" width="588" height="482" border="0" /></p>
+
+<p>Después de enviar un comando es necesario esperar unas cuantas decenas de milisegundos a que se realice la medida. Una vez que la medida se ha completado, el sensor avisará poniendo la línea DATA a 0. El esperar el resultado de la medida, es el objetivo de la siguiente función.</p>
+
+<p><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - espera de resultados" src="/images/07-11/image_9.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - espera de resultados" width="404" height="399" border="0" /></p>
+
+<p>Por último, la función <em>getResult</em> obtiene el resultado de la medida del sensor siguiendo el protocolo descrito en el artículo anterior. Dicha medida se obtiene como un entero de 16 bits que será necesario procesar para obtener la medida en las unidades de humedad y temperatura.</p>
+
+<p><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - lectura de resultados" src="/images/07-11/image_12.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - lectura de resultados" width="563" height="488" border="0" /></p>
+
+<p>Ese es el objetivo de las siguientes funciones <em>printTemperature</em> y <em>printHumidity;</em> envían el comando correspondiente al sensor obteniendo el resultado como un entero de 16 bits, convierten dicho entero a un valor de temperatura en grados centígrados y a un valor de humedad relativa, imprimiendo dichos valores a través del puerto serie.</p>
+
+<p><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - impresión de resultados" src="/images/07-11/image_15.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - impresión de resultados" width="462" height="450" border="0" /></p>
+
+<p>La última parte del sketch de arduino es la configuración que simplemente establecerá el pin SCK como de salida y configurará el puerto serie a 9600 bps.</p>
+
+<p><a href="/images/07-11/image_17.png"><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - configuración" src="/images/07-11/image_thumb_5.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - configuración" width="278" height="106" border="0" /></a></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>y el bucle principal que define una serie de comandos para obtener la medición de la temperatura y la humedad. El comando que utilizaremos en artículos posteriores es el comando ‘g’. Al recibir una ‘g’ en ASCII por el puerto serie, el programa realizara mediciones de la temperatura y de la humedad y las imprimirá por el puerto serie separadas por el carácter ‘</td>
+      <td>’ y finalizadas por ‘rn’.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="/images/07-11/image_19.png"><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - bucle principal" src="/images/07-11/image_thumb_6.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - bucle principal" width="489" height="654" border="0" /></a></p>
+
+<p>La implementación de dicho programa en el Arduino ya nos permite obtener los valores de temperatura y humedad utilizando un programa de terminal tal y como se muestra en la figura siguiente.</p>
+
+<p><img style="display: inline; border: 0px;" title="Sensor de humedad y temperatura con arduino y SHT15 - resultados por consola serie" src="/images/07-11/image_22.png" alt="Sensor de humedad y temperatura con arduino y SHT15 - resultados por consola serie" width="545" height="485" border="0" /></p>
+
+<p>En un artículo posterior utilizaremos esta base para construir un gadget para el escritorio de Windows 7.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">la ciudadela</h2>
+        <ul class="contact-list">
+          <li class="p-name">peancor</li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>Blog personal de Pedro Anuarbe Cortes (@peancor)
+</p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a href="https://twitter.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

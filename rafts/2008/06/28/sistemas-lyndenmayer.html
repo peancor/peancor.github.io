@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Sistemas Lyndenmayer | la ciudadela</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Sistemas Lyndenmayer" />
+<meta name="author" content="peancor" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Los sistemas Lindenmayer (L-systems) fueron introducidos en 1968 por Aristid Lyndenmayer, biólogo y botánico, como una herramienta para el estudio del crecimiento de organismos pluricelulares sencillos, siendo utilizados posteriormente para modelar el proceso de crecimiento de las plantas. Matemáticamente hablando, podemos considerar las formas orgánicas como una función del tiempo… Se podría decir que la forma de un organismo es un evento espacio-temporal y no meramente una configuración espacial.- D’Arcy Thompson Un sistema-L, tipo particular de sistema dinámico simbólico, está compuesto por los siguientes elementos: Alfabeto (V): Es un conjunto finito de simbolos, por ejemplo, V= {a,b,c}. Axioma: llamado también iniciador, es una palabra (w), es decir, una secuencia de simbolos del alfabeto (V). Tomando el alfabeto anterior V={a,b,c}, algunos ejemplos de palabras serían a, ab, acc, abb, etc. La longitud de una palabra, |w|, es el número de simbolos por los que está compuesta. Producciones: las producciones nos indican como reescribir cada símbolo en una palabra. Si un símbolo del alfabeto no contiene una producción, se reescribirá en sí mismo. También está permitido que un símbolo se reescriba en una palabra vacía o de longitud 0. &lt;/ul&gt; En cada generación, se genera una nueva palabra aplicando a cada uno de los símbolos de la anterior palabra, o axioma en el caso de la primera generación, la regla de producción correspondiente. Para representar el sistema utilizaremos el método inventando por Seymour Papert, que permite traducir una secuencia de símbolos en los movimientos de un autómata (una tortuga). Dicho autómata puede pintar en la pantalla a medida que se mueve. En la siguiente aplicación Silverlight se puede observar la representación de algunos sistemas, simplemente, seleccione el que desea ver en el menú. El código fuente de la aplicación anterior se encuentra adjunto a este artículo. Por ejemplo, para desarrollar la planta del tipo F se comienza con el axioma &#39;X&#39; y utilizan las siguientes producciones: La &#39;X&#39; se sustituye por &#39;F-[[X]+X]+F[+FX]-X&#39; La &#39;F&#39; se sustituye por &#39;FF&#39; Los símbolos que no tienen asociada una regla de sustitución se consideran constantes y simplemente se reescriben en si mismos. En este caso, se avanza el sistema hasta la sexta generación, es decir, se aplican las reglas de sustitución seis veces. A la hora de pintar la &#39;planta&#39; se asignarán las siguientes acciones a cada uno de los símbolos: &#39;F&#39;: avanza la tortuga pintando una línea de una determinada longitud (que determinará el tamaño total del dibujo). &#39;-&#39;: gira la tortuga 25º hacia la izquierda. &#39;+&#39;: gira la tortuga 25º hacia la derecha. &#39;[&#39;: guarda la posición y orientación actual de la tortuga. &#39;]&#39;: restaura la posición y orientación de la tortuga previamente guardada. A la hora de guardar y restaurar la posición y orientación de la tortuga se utilizará una estructura de tipo &#39;pila&#39; por lo que el comando restaurar posicionará la tortuga en el estado que tenía cuando se guardó por última vez. Código fuente" />
+<meta property="og:description" content="Los sistemas Lindenmayer (L-systems) fueron introducidos en 1968 por Aristid Lyndenmayer, biólogo y botánico, como una herramienta para el estudio del crecimiento de organismos pluricelulares sencillos, siendo utilizados posteriormente para modelar el proceso de crecimiento de las plantas. Matemáticamente hablando, podemos considerar las formas orgánicas como una función del tiempo… Se podría decir que la forma de un organismo es un evento espacio-temporal y no meramente una configuración espacial.- D’Arcy Thompson Un sistema-L, tipo particular de sistema dinámico simbólico, está compuesto por los siguientes elementos: Alfabeto (V): Es un conjunto finito de simbolos, por ejemplo, V= {a,b,c}. Axioma: llamado también iniciador, es una palabra (w), es decir, una secuencia de simbolos del alfabeto (V). Tomando el alfabeto anterior V={a,b,c}, algunos ejemplos de palabras serían a, ab, acc, abb, etc. La longitud de una palabra, |w|, es el número de simbolos por los que está compuesta. Producciones: las producciones nos indican como reescribir cada símbolo en una palabra. Si un símbolo del alfabeto no contiene una producción, se reescribirá en sí mismo. También está permitido que un símbolo se reescriba en una palabra vacía o de longitud 0. &lt;/ul&gt; En cada generación, se genera una nueva palabra aplicando a cada uno de los símbolos de la anterior palabra, o axioma en el caso de la primera generación, la regla de producción correspondiente. Para representar el sistema utilizaremos el método inventando por Seymour Papert, que permite traducir una secuencia de símbolos en los movimientos de un autómata (una tortuga). Dicho autómata puede pintar en la pantalla a medida que se mueve. En la siguiente aplicación Silverlight se puede observar la representación de algunos sistemas, simplemente, seleccione el que desea ver en el menú. El código fuente de la aplicación anterior se encuentra adjunto a este artículo. Por ejemplo, para desarrollar la planta del tipo F se comienza con el axioma &#39;X&#39; y utilizan las siguientes producciones: La &#39;X&#39; se sustituye por &#39;F-[[X]+X]+F[+FX]-X&#39; La &#39;F&#39; se sustituye por &#39;FF&#39; Los símbolos que no tienen asociada una regla de sustitución se consideran constantes y simplemente se reescriben en si mismos. En este caso, se avanza el sistema hasta la sexta generación, es decir, se aplican las reglas de sustitución seis veces. A la hora de pintar la &#39;planta&#39; se asignarán las siguientes acciones a cada uno de los símbolos: &#39;F&#39;: avanza la tortuga pintando una línea de una determinada longitud (que determinará el tamaño total del dibujo). &#39;-&#39;: gira la tortuga 25º hacia la izquierda. &#39;+&#39;: gira la tortuga 25º hacia la derecha. &#39;[&#39;: guarda la posición y orientación actual de la tortuga. &#39;]&#39;: restaura la posición y orientación de la tortuga previamente guardada. A la hora de guardar y restaurar la posición y orientación de la tortuga se utilizará una estructura de tipo &#39;pila&#39; por lo que el comando restaurar posicionará la tortuga en el estado que tenía cuando se guardó por última vez. Código fuente" />
+<link rel="canonical" href="http://localhost:4000/2008/06/28/sistemas-lyndenmayer.html" />
+<meta property="og:url" content="http://localhost:4000/2008/06/28/sistemas-lyndenmayer.html" />
+<meta property="og:site_name" content="la ciudadela" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2008-06-28T00:00:00+02:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2008/06/28/sistemas-lyndenmayer.html"},"author":{"@type":"Person","name":"peancor"},"@type":"BlogPosting","url":"http://localhost:4000/2008/06/28/sistemas-lyndenmayer.html","headline":"Sistemas Lyndenmayer","dateModified":"2008-06-28T00:00:00+02:00","datePublished":"2008-06-28T00:00:00+02:00","description":"Los sistemas Lindenmayer (L-systems) fueron introducidos en 1968 por Aristid Lyndenmayer, biólogo y botánico, como una herramienta para el estudio del crecimiento de organismos pluricelulares sencillos, siendo utilizados posteriormente para modelar el proceso de crecimiento de las plantas. Matemáticamente hablando, podemos considerar las formas orgánicas como una función del tiempo… Se podría decir que la forma de un organismo es un evento espacio-temporal y no meramente una configuración espacial.- D’Arcy Thompson Un sistema-L, tipo particular de sistema dinámico simbólico, está compuesto por los siguientes elementos: Alfabeto (V): Es un conjunto finito de simbolos, por ejemplo, V= {a,b,c}. Axioma: llamado también iniciador, es una palabra (w), es decir, una secuencia de simbolos del alfabeto (V). Tomando el alfabeto anterior V={a,b,c}, algunos ejemplos de palabras serían a, ab, acc, abb, etc. La longitud de una palabra, |w|, es el número de simbolos por los que está compuesta. Producciones: las producciones nos indican como reescribir cada símbolo en una palabra. Si un símbolo del alfabeto no contiene una producción, se reescribirá en sí mismo. También está permitido que un símbolo se reescriba en una palabra vacía o de longitud 0. &lt;/ul&gt; En cada generación, se genera una nueva palabra aplicando a cada uno de los símbolos de la anterior palabra, o axioma en el caso de la primera generación, la regla de producción correspondiente. Para representar el sistema utilizaremos el método inventando por Seymour Papert, que permite traducir una secuencia de símbolos en los movimientos de un autómata (una tortuga). Dicho autómata puede pintar en la pantalla a medida que se mueve. En la siguiente aplicación Silverlight se puede observar la representación de algunos sistemas, simplemente, seleccione el que desea ver en el menú. El código fuente de la aplicación anterior se encuentra adjunto a este artículo. Por ejemplo, para desarrollar la planta del tipo F se comienza con el axioma &#39;X&#39; y utilizan las siguientes producciones: La &#39;X&#39; se sustituye por &#39;F-[[X]+X]+F[+FX]-X&#39; La &#39;F&#39; se sustituye por &#39;FF&#39; Los símbolos que no tienen asociada una regla de sustitución se consideran constantes y simplemente se reescriben en si mismos. En este caso, se avanza el sistema hasta la sexta generación, es decir, se aplican las reglas de sustitución seis veces. A la hora de pintar la &#39;planta&#39; se asignarán las siguientes acciones a cada uno de los símbolos: &#39;F&#39;: avanza la tortuga pintando una línea de una determinada longitud (que determinará el tamaño total del dibujo). &#39;-&#39;: gira la tortuga 25º hacia la izquierda. &#39;+&#39;: gira la tortuga 25º hacia la derecha. &#39;[&#39;: guarda la posición y orientación actual de la tortuga. &#39;]&#39;: restaura la posición y orientación de la tortuga previamente guardada. A la hora de guardar y restaurar la posición y orientación de la tortuga se utilizará una estructura de tipo &#39;pila&#39; por lo que el comando restaurar posicionará la tortuga en el estado que tenía cuando se guardó por última vez. Código fuente","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="la ciudadela" /><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">la ciudadela</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Sistemas Lyndenmayer</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Los sistemas Lindenmayer (L-systems) fueron introducidos en 1968 por Aristid Lyndenmayer, biólogo y botánico, como una herramienta para el estudio del crecimiento de organismos pluricelulares sencillos, siendo utilizados posteriormente para modelar el proceso de crecimiento de las plantas.</p>
+<blockquote> <p>Matemáticamente hablando, podemos considerar las formas orgánicas como una función del tiempo… Se podría decir que la forma de un organismo es un evento espacio-temporal y no meramente una configuración espacial.- D’Arcy Thompson</p></blockquote>
+<p>Un sistema-L, tipo particular de sistema dinámico simbólico, está compuesto por los siguientes elementos:</p>
+<ul> <li>Alfabeto (V): Es un conjunto finito de simbolos, por ejemplo, V= {a,b,c}.  <li>Axioma: llamado también iniciador, es una palabra (w), es decir, una secuencia de simbolos del alfabeto (V). Tomando el alfabeto anterior V={a,b,c}, algunos ejemplos de palabras serían a, ab, acc, abb, etc. La longitud de una palabra, |w|, es el número de simbolos por los que está compuesta.  <li>Producciones: las producciones nos indican como reescribir cada símbolo en una palabra. Si un símbolo del alfabeto no contiene una producción, se reescribirá en sí mismo. También está permitido que un símbolo se reescriba en una palabra vacía o de longitud 0. </li>&lt;/ul&gt; <p>En cada generación, se genera una nueva palabra aplicando a cada uno de los símbolos de la anterior palabra, o axioma en el caso de la primera generación, la regla de producción correspondiente.</p> <p>Para representar el sistema utilizaremos el método inventando por Seymour Papert, que permite traducir una secuencia de símbolos en los movimientos de un autómata (una tortuga). Dicho autómata puede pintar en la pantalla a medida que se mueve.</p> <p>En la siguiente aplicación Silverlight se puede observar la representación de algunos sistemas, simplemente, seleccione el que desea ver en el menú.</p>
+
+<object width="500" height="300" data="data:application/x-silverlight-2," type="application/x-silverlight-2">
+    <param name="source" value="/files/2008-06-LSystems.xap" />
+</object>
+
+<p>El código fuente de la aplicación anterior se encuentra adjunto a este artículo.</p> <p>Por ejemplo, para desarrollar la planta del tipo F se comienza con el axioma 'X' y utilizan las siguientes producciones:</p> <ul> <li>La 'X' se sustituye por 'F-[[X]+X]+F[+FX]-X'</li> <li>La 'F' se sustituye por 'FF'</li></ul> <p>Los símbolos que no tienen asociada una regla de sustitución se consideran constantes y simplemente se reescriben en si mismos. En este caso, se avanza el sistema hasta la sexta generación, es decir, se aplican las reglas de sustitución seis veces.</p> <p>A la hora de pintar la 'planta' se asignarán las siguientes acciones a cada uno de los símbolos:</p> <ul> <li>'F': avanza la tortuga pintando una línea de una determinada longitud (que determinará el tamaño total del dibujo).</li> <li>'-': gira la tortuga 25º hacia la izquierda.</li> <li>'+': gira la tortuga 25º hacia la derecha.</li> <li>'[': guarda la posición y orientación actual de la tortuga.</li> <li>']': restaura la posición y orientación de la tortuga previamente guardada.</li></ul> <p>A la hora de guardar y restaurar la posición y orientación de la tortuga se utilizará una estructura de tipo 'pila' por lo que el comando restaurar posicionará la tortuga en el estado que tenía cuando se guardó por última vez.</p>
+
+<a href="/files/2008-06-LSystems.zip">Código fuente</a>
+</li></li></ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">la ciudadela</h2>
+        <ul class="contact-list">
+          <li class="p-name">peancor</li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>Blog personal de Pedro Anuarbe Cortes (@peancor)
+</p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a href="https://twitter.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

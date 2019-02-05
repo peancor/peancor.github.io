@@ -1,0 +1,55 @@
+﻿body {
+        background:#eeeeee;
+}
+
+#screen { 
+        width:320px;
+        height:200px; 
+        background: #b8b8b8;                
+        position:relative;
+        z-index:10;
+}
+
+#grid { 
+        width:320px;
+        height:200px; 
+        background: url(stepping-feet-background.png);                
+        position:relative;
+        visibility: visible;
+        z-index:10;
+}
+
+#yellowSprite { 
+        background:#FFFF20; 
+        width:32px;
+        height:16px;                
+        position:absolute;        
+        top:70px;
+        left:146px;
+        z-index:12;
+        
+}
+
+#blueSprite { 
+        background:#0000AA;         
+        width:32px;
+        height:16px;                
+        position:absolute;        
+        top:32px;
+        left:146px;
+        z-index:12;        
+}
+
+#bottomText 
+{
+    position:absolute;
+    background-color:Blue;
+    top:171px;
+    vertical-align:bottom;    
+    text-align:center;
+    z-index:50;
+    color:Red;
+    font-weight:700;
+    left: 126px;
+    font-size: medium;
+}

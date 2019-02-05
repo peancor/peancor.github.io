@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Pinceladas de evolución | la ciudadela</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Pinceladas de evolución" />
+<meta name="author" content="peancor" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Los algoritmos genéticos están inspirados en la teoría de la evolución de Darwin y forman parte de la computación evolutiva, área de rápido crecimiento dentro del campo de la inteligencia artificial. Los seres vivos están compuestos por células. En cada una de la células de un organismo se encuentra el mismo conjunto de cromosomas. Los cromosomas son cadenas de ADN y sirven como modelo para el organismo, es decir, el organismo se construirá o desarrollará en base a las instrucciones codificadas en su cromosomas. Un cromosoma está compuesto por genes, bloques de ADN. Cada gen codifica una proteína particular. Se podría decir que cada gen codifica un rasgo, como por ejemplo el color de los ojos. Los diferentes rasgos son llamados alelos (ojos azules, ojos marrones). Cada gen tiene su propia posición dentro del cromosoma. El conjunto completo de material genético (todos los cromosomas) es llamado genoma. Un conjunto particular de genes del genoma se llama genotipo. El genotipo es la base para el fenotipo, las características físicas y mentales que presentara el organismo al desarrollarse. Durante la reproducción, el material genético de cada uno de los padres se recombina al formarse los gametos, células cuyo material genético se fusionará en la fecundación. Existe un complicado conjunto de sistemas encargados de asegurar la integridad de la molécula de ADN con el fin de preservar la información hereditaria y reparar la mayor parte de las alteraciones que pueda experimentar, sin embargo, aproximadamente uno de cada mil errores no es corregido por lo que la información se ve alterada de una generación a la siguiente apareciendo lo que se denomina mutación, que hace referencia a cualquier cambio permanente en el material génico no debido a la segregación independiente de los cromosomas o a la recombinación que ocurre durante el proceso de meiosis. Las mutaciones se producen al azar y son generalmente perjudiciales, aunque en ocasiones también ocurren mutaciones beneficiosas que confieren alguna ventaja a las células en las que aparecen. Tanto las recombinaciones como las mutaciones beneficiosas son las causas de las grandes variaciones que muestran los individuos de una misma especie. Los individuos que presenten una mejor adaptación a su entorno es más probable que tengan descendientes formados en base a su material genético. Los algoritmos genéticos permiten encontrar buenas soluciones para una clase de problemas cuya solución sería difícil de encontrar utilizando otros métodos. Conceptualmente establecen una analogía entre el conjunto de soluciones de un problema y el conjunto de individuos de una población. Cada individuo representa una posible solución al problema y se parte de un conjunto de individuos normalmente generado al azar que se hará evolucionar de tal forma que las nuevas generaciones contengan soluciones mejores para el problema a resolver. De forma general el proceso es el siguiente: Generar una población aleatoria de n cromosomas (posibles soluciones al problema). Evaluar la adaptación f(x) de cada cromosoma x en la población. Dicha función evaluara la bondad de la solución que presenta cada cromosoma. Si se cumple la condición de finalización (típicamente el haber encontrado una solución aceptable o llegar a un número de generaciones máximo) detener el algoritmo. Generar una nueva población. El proceso de crear una nueva generación típicamente se divide en cuatro pasos: Selección, Cruzamiento, Mutación y reemplazo. Reemplazar la antigua generación por la nueva. Ir al paso 2. Un ejemplo de resolución de este tipo de problemas lo encontramos en la reciente implementación por Roger Alsing de un algoritmo genético para aproximar una imagen utilizando un número pequeño de polígonos traslucidos. El funcionamiento del algoritmo, variante del proceso descrito anteriormente, se puede resumir en los siguientes pasos, tal y como Roger describe en su blog: Generar una cadena de ADN de forma aleatoria. Esta cadena contendrá las instrucciones para pintar cada uno de los polígonos que aparecen en pantalla. Generar una nueva cadena de ADN copiando la cadena de ADN anterior mutándola ligeramente. Utilizar la cadena para representar los polígonos en pantalla. Comparar el resultado con la imagen original. Si la nueva imagen se parece más a la imagen original sobrescribir la cadena de ADN original con la nueva cadena. Repetir desde 1. Se puso su implementación a prueba con una imagen arbitraria y se dejo evolucionar al ‘organismo’ durante aproximadamente media hora. En el siguiente video se puede ver el proceso de evolución acelerado por un factor de 32. La imagen final generada se corresponde con la generación 117653 y está compuesta por un total de 78 polígonos con una media de 8 puntos por polígono. Se puede descargar el código fuente del programa en el blog de Roger Alsing. Fuentes| Introduction to Genetic Algorithms | Wikipedia | Fundamentos biológicos de la conducta" />
+<meta property="og:description" content="Los algoritmos genéticos están inspirados en la teoría de la evolución de Darwin y forman parte de la computación evolutiva, área de rápido crecimiento dentro del campo de la inteligencia artificial. Los seres vivos están compuestos por células. En cada una de la células de un organismo se encuentra el mismo conjunto de cromosomas. Los cromosomas son cadenas de ADN y sirven como modelo para el organismo, es decir, el organismo se construirá o desarrollará en base a las instrucciones codificadas en su cromosomas. Un cromosoma está compuesto por genes, bloques de ADN. Cada gen codifica una proteína particular. Se podría decir que cada gen codifica un rasgo, como por ejemplo el color de los ojos. Los diferentes rasgos son llamados alelos (ojos azules, ojos marrones). Cada gen tiene su propia posición dentro del cromosoma. El conjunto completo de material genético (todos los cromosomas) es llamado genoma. Un conjunto particular de genes del genoma se llama genotipo. El genotipo es la base para el fenotipo, las características físicas y mentales que presentara el organismo al desarrollarse. Durante la reproducción, el material genético de cada uno de los padres se recombina al formarse los gametos, células cuyo material genético se fusionará en la fecundación. Existe un complicado conjunto de sistemas encargados de asegurar la integridad de la molécula de ADN con el fin de preservar la información hereditaria y reparar la mayor parte de las alteraciones que pueda experimentar, sin embargo, aproximadamente uno de cada mil errores no es corregido por lo que la información se ve alterada de una generación a la siguiente apareciendo lo que se denomina mutación, que hace referencia a cualquier cambio permanente en el material génico no debido a la segregación independiente de los cromosomas o a la recombinación que ocurre durante el proceso de meiosis. Las mutaciones se producen al azar y son generalmente perjudiciales, aunque en ocasiones también ocurren mutaciones beneficiosas que confieren alguna ventaja a las células en las que aparecen. Tanto las recombinaciones como las mutaciones beneficiosas son las causas de las grandes variaciones que muestran los individuos de una misma especie. Los individuos que presenten una mejor adaptación a su entorno es más probable que tengan descendientes formados en base a su material genético. Los algoritmos genéticos permiten encontrar buenas soluciones para una clase de problemas cuya solución sería difícil de encontrar utilizando otros métodos. Conceptualmente establecen una analogía entre el conjunto de soluciones de un problema y el conjunto de individuos de una población. Cada individuo representa una posible solución al problema y se parte de un conjunto de individuos normalmente generado al azar que se hará evolucionar de tal forma que las nuevas generaciones contengan soluciones mejores para el problema a resolver. De forma general el proceso es el siguiente: Generar una población aleatoria de n cromosomas (posibles soluciones al problema). Evaluar la adaptación f(x) de cada cromosoma x en la población. Dicha función evaluara la bondad de la solución que presenta cada cromosoma. Si se cumple la condición de finalización (típicamente el haber encontrado una solución aceptable o llegar a un número de generaciones máximo) detener el algoritmo. Generar una nueva población. El proceso de crear una nueva generación típicamente se divide en cuatro pasos: Selección, Cruzamiento, Mutación y reemplazo. Reemplazar la antigua generación por la nueva. Ir al paso 2. Un ejemplo de resolución de este tipo de problemas lo encontramos en la reciente implementación por Roger Alsing de un algoritmo genético para aproximar una imagen utilizando un número pequeño de polígonos traslucidos. El funcionamiento del algoritmo, variante del proceso descrito anteriormente, se puede resumir en los siguientes pasos, tal y como Roger describe en su blog: Generar una cadena de ADN de forma aleatoria. Esta cadena contendrá las instrucciones para pintar cada uno de los polígonos que aparecen en pantalla. Generar una nueva cadena de ADN copiando la cadena de ADN anterior mutándola ligeramente. Utilizar la cadena para representar los polígonos en pantalla. Comparar el resultado con la imagen original. Si la nueva imagen se parece más a la imagen original sobrescribir la cadena de ADN original con la nueva cadena. Repetir desde 1. Se puso su implementación a prueba con una imagen arbitraria y se dejo evolucionar al ‘organismo’ durante aproximadamente media hora. En el siguiente video se puede ver el proceso de evolución acelerado por un factor de 32. La imagen final generada se corresponde con la generación 117653 y está compuesta por un total de 78 polígonos con una media de 8 puntos por polígono. Se puede descargar el código fuente del programa en el blog de Roger Alsing. Fuentes| Introduction to Genetic Algorithms | Wikipedia | Fundamentos biológicos de la conducta" />
+<link rel="canonical" href="http://localhost:4000/2008/12/21/pinceladas-de-evolucion.html" />
+<meta property="og:url" content="http://localhost:4000/2008/12/21/pinceladas-de-evolucion.html" />
+<meta property="og:site_name" content="la ciudadela" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2008-12-21T00:00:00+01:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2008/12/21/pinceladas-de-evolucion.html"},"author":{"@type":"Person","name":"peancor"},"@type":"BlogPosting","url":"http://localhost:4000/2008/12/21/pinceladas-de-evolucion.html","headline":"Pinceladas de evolución","dateModified":"2008-12-21T00:00:00+01:00","datePublished":"2008-12-21T00:00:00+01:00","description":"Los algoritmos genéticos están inspirados en la teoría de la evolución de Darwin y forman parte de la computación evolutiva, área de rápido crecimiento dentro del campo de la inteligencia artificial. Los seres vivos están compuestos por células. En cada una de la células de un organismo se encuentra el mismo conjunto de cromosomas. Los cromosomas son cadenas de ADN y sirven como modelo para el organismo, es decir, el organismo se construirá o desarrollará en base a las instrucciones codificadas en su cromosomas. Un cromosoma está compuesto por genes, bloques de ADN. Cada gen codifica una proteína particular. Se podría decir que cada gen codifica un rasgo, como por ejemplo el color de los ojos. Los diferentes rasgos son llamados alelos (ojos azules, ojos marrones). Cada gen tiene su propia posición dentro del cromosoma. El conjunto completo de material genético (todos los cromosomas) es llamado genoma. Un conjunto particular de genes del genoma se llama genotipo. El genotipo es la base para el fenotipo, las características físicas y mentales que presentara el organismo al desarrollarse. Durante la reproducción, el material genético de cada uno de los padres se recombina al formarse los gametos, células cuyo material genético se fusionará en la fecundación. Existe un complicado conjunto de sistemas encargados de asegurar la integridad de la molécula de ADN con el fin de preservar la información hereditaria y reparar la mayor parte de las alteraciones que pueda experimentar, sin embargo, aproximadamente uno de cada mil errores no es corregido por lo que la información se ve alterada de una generación a la siguiente apareciendo lo que se denomina mutación, que hace referencia a cualquier cambio permanente en el material génico no debido a la segregación independiente de los cromosomas o a la recombinación que ocurre durante el proceso de meiosis. Las mutaciones se producen al azar y son generalmente perjudiciales, aunque en ocasiones también ocurren mutaciones beneficiosas que confieren alguna ventaja a las células en las que aparecen. Tanto las recombinaciones como las mutaciones beneficiosas son las causas de las grandes variaciones que muestran los individuos de una misma especie. Los individuos que presenten una mejor adaptación a su entorno es más probable que tengan descendientes formados en base a su material genético. Los algoritmos genéticos permiten encontrar buenas soluciones para una clase de problemas cuya solución sería difícil de encontrar utilizando otros métodos. Conceptualmente establecen una analogía entre el conjunto de soluciones de un problema y el conjunto de individuos de una población. Cada individuo representa una posible solución al problema y se parte de un conjunto de individuos normalmente generado al azar que se hará evolucionar de tal forma que las nuevas generaciones contengan soluciones mejores para el problema a resolver. De forma general el proceso es el siguiente: Generar una población aleatoria de n cromosomas (posibles soluciones al problema). Evaluar la adaptación f(x) de cada cromosoma x en la población. Dicha función evaluara la bondad de la solución que presenta cada cromosoma. Si se cumple la condición de finalización (típicamente el haber encontrado una solución aceptable o llegar a un número de generaciones máximo) detener el algoritmo. Generar una nueva población. El proceso de crear una nueva generación típicamente se divide en cuatro pasos: Selección, Cruzamiento, Mutación y reemplazo. Reemplazar la antigua generación por la nueva. Ir al paso 2. Un ejemplo de resolución de este tipo de problemas lo encontramos en la reciente implementación por Roger Alsing de un algoritmo genético para aproximar una imagen utilizando un número pequeño de polígonos traslucidos. El funcionamiento del algoritmo, variante del proceso descrito anteriormente, se puede resumir en los siguientes pasos, tal y como Roger describe en su blog: Generar una cadena de ADN de forma aleatoria. Esta cadena contendrá las instrucciones para pintar cada uno de los polígonos que aparecen en pantalla. Generar una nueva cadena de ADN copiando la cadena de ADN anterior mutándola ligeramente. Utilizar la cadena para representar los polígonos en pantalla. Comparar el resultado con la imagen original. Si la nueva imagen se parece más a la imagen original sobrescribir la cadena de ADN original con la nueva cadena. Repetir desde 1. Se puso su implementación a prueba con una imagen arbitraria y se dejo evolucionar al ‘organismo’ durante aproximadamente media hora. En el siguiente video se puede ver el proceso de evolución acelerado por un factor de 32. La imagen final generada se corresponde con la generación 117653 y está compuesta por un total de 78 polígonos con una media de 8 puntos por polígono. Se puede descargar el código fuente del programa en el blog de Roger Alsing. Fuentes| Introduction to Genetic Algorithms | Wikipedia | Fundamentos biológicos de la conducta","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="la ciudadela" /><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">la ciudadela</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Pinceladas de evolución</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Los algoritmos genéticos están inspirados en la teoría de la evolución de Darwin y forman parte de la computación evolutiva, área de rápido crecimiento dentro del campo de la inteligencia artificial.</p>
+
+<p>Los seres vivos están compuestos por células. En cada una de la células de un organismo se encuentra el mismo conjunto de cromosomas. Los cromosomas son cadenas de ADN y sirven como modelo para el organismo, es decir, el organismo se construirá o desarrollará en base a las instrucciones codificadas en su cromosomas.</p>
+
+<p><img title="Representación de un cromosoma" src="/images/07-11/2008-12-chromosome.jpg" alt="Representación de un cromosoma" /></p>
+
+<p>Un cromosoma está compuesto por genes, bloques de ADN. Cada gen codifica una proteína particular. Se podría decir que cada gen codifica un rasgo, como por ejemplo el color de los ojos. Los diferentes rasgos son llamados alelos (ojos azules, ojos marrones). Cada gen tiene su propia posición dentro del cromosoma.</p>
+
+<p>El conjunto completo de material genético (todos los cromosomas) es llamado genoma. Un conjunto particular de genes del genoma se llama genotipo. El genotipo es la base para el fenotipo, las características físicas y mentales que presentara el organismo al desarrollarse.</p>
+
+<p>Durante la reproducción, el material genético de cada uno de los padres se recombina al formarse los gametos, células cuyo material genético se fusionará en la fecundación. Existe un complicado conjunto de sistemas encargados de asegurar la integridad de la molécula de ADN con el fin de preservar la información hereditaria y reparar la mayor parte de las alteraciones que pueda experimentar, sin embargo, aproximadamente uno de cada mil errores no es corregido por lo que la información se ve alterada de una generación a la siguiente apareciendo lo que se denomina <strong>mutación</strong>, que hace referencia a cualquier cambio permanente en el material génico no debido a la segregación independiente de los cromosomas o a la recombinación que ocurre durante el proceso de meiosis.</p>
+
+<p>Las mutaciones se producen al azar y son generalmente perjudiciales, aunque en ocasiones también ocurren mutaciones beneficiosas que confieren alguna ventaja a las células en las que aparecen.</p>
+
+<p>Tanto las recombinaciones como las mutaciones beneficiosas son las causas de las grandes variaciones que muestran los individuos de una misma especie. Los individuos que presenten una mejor adaptación a su entorno es más probable que tengan descendientes formados en base a su material genético.</p>
+
+<p>Los algoritmos genéticos permiten encontrar buenas soluciones para una clase de problemas cuya solución sería difícil de encontrar utilizando otros métodos. Conceptualmente establecen una analogía entre el conjunto de soluciones de un problema y el conjunto de individuos de una población. Cada individuo representa una posible solución al problema y se parte de un conjunto de individuos normalmente generado al azar que se hará evolucionar de tal forma que las nuevas generaciones contengan soluciones mejores para el problema a resolver.</p>
+
+<p>De forma general el proceso es el siguiente:</p>
+<blockquote>
+<ol>
+	<li>Generar una población aleatoria de n cromosomas (posibles soluciones al problema).</li>
+	<li>Evaluar la adaptación f(x) de cada cromosoma x en la población. Dicha función evaluara la bondad de la solución que presenta cada cromosoma.</li>
+	<li>Si se cumple la condición de finalización (típicamente el haber encontrado una solución aceptable o llegar a un número de generaciones máximo) detener el algoritmo.</li>
+	<li>Generar una nueva población. El proceso de crear una nueva generación típicamente se divide en cuatro pasos: Selección, Cruzamiento, Mutación y reemplazo.</li>
+	<li>Reemplazar la antigua generación por la nueva.</li>
+	<li>Ir al paso 2.</li>
+</ol>
+</blockquote>
+<p>Un ejemplo de resolución de este tipo de problemas lo encontramos en la reciente implementación por <a href="http://rogeralsing.com/2008/12/07/genetic-programming-evolution-of-mona-lisa/" target="_blank">Roger Alsing</a> de un algoritmo genético para aproximar una imagen utilizando un número pequeño de polígonos traslucidos.</p>
+
+<p><img title="Aproximación mediante poligonos de una fotografía de Darwin utilizando un algoritmo genético" src="/images/07-11/2008-12-darwin.png" alt="Aproximación mediante poligonos de una fotografía de Darwin utilizando un algoritmo genético" /></p>
+
+<p>El funcionamiento del algoritmo, variante del proceso descrito anteriormente, se puede resumir en los siguientes pasos, tal y como Roger describe en su blog:</p>
+<blockquote>
+<ol>
+	<li>Generar una cadena de ADN de forma aleatoria. Esta cadena contendrá las instrucciones para pintar cada uno de los polígonos que aparecen en pantalla.</li>
+	<li>Generar una nueva cadena de ADN copiando la cadena de ADN anterior mutándola ligeramente.</li>
+	<li>Utilizar la cadena para representar los polígonos en pantalla.</li>
+	<li>Comparar el resultado con la imagen original.</li>
+	<li>Si la nueva imagen se parece más a la imagen original sobrescribir la cadena de ADN original con la nueva cadena.</li>
+	<li>Repetir desde 1.</li>
+</ol>
+</blockquote>
+<p>Se puso su implementación a prueba con una imagen arbitraria y se dejo evolucionar al ‘organismo’ durante aproximadamente media hora. En el siguiente video se puede ver el proceso de evolución acelerado por un factor de 32.</p>
+
+<div class="flex-video">
+  <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtube.com/embed/vII5kIxZBj8" frameborder="0"></iframe>
+</div>
+
+<p>La imagen final generada se corresponde con la generación 117653 y está compuesta por un total de 78 polígonos con una media de 8 puntos por polígono.</p>
+
+<p>Se puede descargar el código fuente del programa en el <a href="http://rogeralsing.com/" target="_blank">blog de Roger Alsing</a>.</p>
+<h6>Fuentes| <a href="http://www.obitko.com/tutorials/genetic-algorithms/" target="_blank">Introduction to Genetic Algorithms</a> | <a href="http://es.wikipedia.org/wiki/Algoritmo_gen%C3%A9tico" target="_blank">Wikipedia</a> | <a href="http://www.casadellibro.com/libro-fundamentos-biologicos-de-la-conducta-2-vols-2-ed/2900000813278" target="_blank">Fundamentos biológicos de la conducta</a></h6>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">la ciudadela</h2>
+        <ul class="contact-list">
+          <li class="p-name">peancor</li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>Blog personal de Pedro Anuarbe Cortes (@peancor)
+</p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a href="https://twitter.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

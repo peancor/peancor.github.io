@@ -1,0 +1,8 @@
+---
+layout: page
+title: El sombrerero loco
+image:
+  thumb: 07-11/2009-01-mad-hatter.jpg
+---
+
+<p>¿Se ha preguntado alguna vez por qué el Sombrerero loco de <a href="http://es.wikipedia.org/wiki/Alicia_en_el_Pa&iacute;s_de_las_Maravillas" target="_blank">Alicia en el país de las maravillas</a> era un loco sombrerero y no un loco de otro tipo?</p>  <p><img src="{{ site.baseurl }}/images/07-11/2009-01-mad-hatter.jpg" /> </p>  <p>El sistema nervioso puede resultar dañado por la exposición a cualquiera de una serie de sustancias químicas tóxicas llamadas neurotoxinas, que pueden penetrar en la circulación general procedentes del tubo digestivo, de los pulmones, o a través de la piel. Por ejemplo, los metales pesados como el mercurio y el plomo pueden acumularse en el encéfalo y dañarlo de forma permanente, produciendo una psicosis tóxica (demencia crónica producida por una neurotoxina).</p>  <p>En la Inglaterra de los siglos 18 y 19, los fabricantes de sombreros frecuentemente se volvían locos debido al mercurio que empleaban para preparar el fieltro que utilizaban para hacer los sombreros. Algo parecido sucede con la palabra chalado [en inglés, ‘crackpot’], que originalmente hacía referencia a la psicosis tóxica observada en algunas personas –fundamentalmente en las pobres- que preparaban su té en una tetera [‘pot’] de cerámica agrietada [‘crack’] soldada con plomo.</p>  <h6>Extraído de Biopsicología 6Ed por John P.J. Pinel.</h6>

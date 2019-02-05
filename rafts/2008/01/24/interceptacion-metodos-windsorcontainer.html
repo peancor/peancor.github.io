@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Interceptación de métodos con WindsorContainer | la ciudadela</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Interceptación de métodos con WindsorContainer" />
+<meta name="author" content="peancor" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Una de las ventajas de utilizar un contenedor como Windsor container es la capacidad que nos proporciona para interceptar llamadas a métodos. Supongamos que tenemos un sistema que se dedica a esperar a la recepción de un mensaje y que está implementado por la clase Receiver. public class Receiver{ public void WaitMessages() { while (true) { Console.Write(&quot;Escriba un mensaje: &quot;); string message = Console.ReadLine(); if (message == &quot;exit&quot; || message == &quot;quit&quot;) break; OnMessageReceived(message); } } protected virtual void OnMessageReceived(string message) { Console.WriteLine(&quot;Mensaje recibido: &quot; + message); } } El receptor espera a que le llegue un mensaje y una vez recibido llama al método OnMessageReceived, que se encarga de procesar el mensaje y que típicamente podría generar un evento informando a otras partes del sistema de la recepción de un mensaje. Ahora imaginemos que por razones de seguridad queremos supervisar los mensajes que lleguen y dar nuestra aprobación para que dichos mensajes se transmitan. Una opción sería modificar la clase Receiver con la lógica necesaria para implementar el nuevo sistema de seguridad, sin embargo, dicha clase puede ser bastante compleja ya de por si y además, puede que deseemos reutilizar dicha clase en otras partes que no requieran tan estricto control de seguridad. La interceptación de métodos nos proporciona una opción sin duda más conveniente para este caso. Generamos una clase, que llamaremos ParentalControlInterceptor la cual implementa el interface IInterceptor. public class ParentalControlInterceptor: IInterceptor{ #region IInterceptor Members public void Intercept(IInvocation invocation) { if (invocation.Method.Name == &quot;OnMessageReceived&quot;) { Console.WriteLine(&quot;Mensaje interceptado: &quot; + invocation.Arguments[0].ToString()); Console.Write(&quot;¿Aprueba el envío de este mensage (s/n)?&quot;); string response = Console.ReadLine(); if (response.ToUpper().StartsWith(&quot;S&quot;)) invocation.Proceed(); } } #endregion} En dicha clase comprobamos si el nombre del método interceptado coincide con el que nos interesa, en este caso es OnMessageReceived, y en caso afirmativo preguntamos si se desea aprobar la retransmisión del mensaje. El método OnMessageReceived de nuestra instancia de Receiver solo será invocado en el caso de que se apruebe la retransmisión. Por último, para que los métodos de nuestro receptor sean interceptados todo lo que tenemos que hacer es decorar la clase con el atributo Interceptor tal y como se muestra a continuación. [Interceptor(typeof(ParentalControlInterceptor))] public class Receiver{ public void WaitMessages() { while (true) { Console.Write(&quot;Escriba un mensaje: &quot;); string message = Console.ReadLine(); if (message == &quot;exit&quot; || message == &quot;quit&quot;) break; OnMessageReceived(message); } } protected virtual void OnMessageReceived(string message) { Console.WriteLine(&quot;Mensaje recibido: &quot; + message); } } Actualmente, para que la interceptación se produzca es un requisito que, o bien se registre el componente en el contenedor con un interface o bien que los métodos a interceptar sean marcados como virtuales. En la siguiente figura se observan los resultados que produce la interceptación tanto en el caso de que un mensaje se apruebe como en el contrario." />
+<meta property="og:description" content="Una de las ventajas de utilizar un contenedor como Windsor container es la capacidad que nos proporciona para interceptar llamadas a métodos. Supongamos que tenemos un sistema que se dedica a esperar a la recepción de un mensaje y que está implementado por la clase Receiver. public class Receiver{ public void WaitMessages() { while (true) { Console.Write(&quot;Escriba un mensaje: &quot;); string message = Console.ReadLine(); if (message == &quot;exit&quot; || message == &quot;quit&quot;) break; OnMessageReceived(message); } } protected virtual void OnMessageReceived(string message) { Console.WriteLine(&quot;Mensaje recibido: &quot; + message); } } El receptor espera a que le llegue un mensaje y una vez recibido llama al método OnMessageReceived, que se encarga de procesar el mensaje y que típicamente podría generar un evento informando a otras partes del sistema de la recepción de un mensaje. Ahora imaginemos que por razones de seguridad queremos supervisar los mensajes que lleguen y dar nuestra aprobación para que dichos mensajes se transmitan. Una opción sería modificar la clase Receiver con la lógica necesaria para implementar el nuevo sistema de seguridad, sin embargo, dicha clase puede ser bastante compleja ya de por si y además, puede que deseemos reutilizar dicha clase en otras partes que no requieran tan estricto control de seguridad. La interceptación de métodos nos proporciona una opción sin duda más conveniente para este caso. Generamos una clase, que llamaremos ParentalControlInterceptor la cual implementa el interface IInterceptor. public class ParentalControlInterceptor: IInterceptor{ #region IInterceptor Members public void Intercept(IInvocation invocation) { if (invocation.Method.Name == &quot;OnMessageReceived&quot;) { Console.WriteLine(&quot;Mensaje interceptado: &quot; + invocation.Arguments[0].ToString()); Console.Write(&quot;¿Aprueba el envío de este mensage (s/n)?&quot;); string response = Console.ReadLine(); if (response.ToUpper().StartsWith(&quot;S&quot;)) invocation.Proceed(); } } #endregion} En dicha clase comprobamos si el nombre del método interceptado coincide con el que nos interesa, en este caso es OnMessageReceived, y en caso afirmativo preguntamos si se desea aprobar la retransmisión del mensaje. El método OnMessageReceived de nuestra instancia de Receiver solo será invocado en el caso de que se apruebe la retransmisión. Por último, para que los métodos de nuestro receptor sean interceptados todo lo que tenemos que hacer es decorar la clase con el atributo Interceptor tal y como se muestra a continuación. [Interceptor(typeof(ParentalControlInterceptor))] public class Receiver{ public void WaitMessages() { while (true) { Console.Write(&quot;Escriba un mensaje: &quot;); string message = Console.ReadLine(); if (message == &quot;exit&quot; || message == &quot;quit&quot;) break; OnMessageReceived(message); } } protected virtual void OnMessageReceived(string message) { Console.WriteLine(&quot;Mensaje recibido: &quot; + message); } } Actualmente, para que la interceptación se produzca es un requisito que, o bien se registre el componente en el contenedor con un interface o bien que los métodos a interceptar sean marcados como virtuales. En la siguiente figura se observan los resultados que produce la interceptación tanto en el caso de que un mensaje se apruebe como en el contrario." />
+<link rel="canonical" href="http://localhost:4000/2008/01/24/interceptacion-metodos-windsorcontainer.html" />
+<meta property="og:url" content="http://localhost:4000/2008/01/24/interceptacion-metodos-windsorcontainer.html" />
+<meta property="og:site_name" content="la ciudadela" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2008-01-24T00:00:00+01:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2008/01/24/interceptacion-metodos-windsorcontainer.html"},"author":{"@type":"Person","name":"peancor"},"@type":"BlogPosting","url":"http://localhost:4000/2008/01/24/interceptacion-metodos-windsorcontainer.html","headline":"Interceptación de métodos con WindsorContainer","dateModified":"2008-01-24T00:00:00+01:00","datePublished":"2008-01-24T00:00:00+01:00","description":"Una de las ventajas de utilizar un contenedor como Windsor container es la capacidad que nos proporciona para interceptar llamadas a métodos. Supongamos que tenemos un sistema que se dedica a esperar a la recepción de un mensaje y que está implementado por la clase Receiver. public class Receiver{ public void WaitMessages() { while (true) { Console.Write(&quot;Escriba un mensaje: &quot;); string message = Console.ReadLine(); if (message == &quot;exit&quot; || message == &quot;quit&quot;) break; OnMessageReceived(message); } } protected virtual void OnMessageReceived(string message) { Console.WriteLine(&quot;Mensaje recibido: &quot; + message); } } El receptor espera a que le llegue un mensaje y una vez recibido llama al método OnMessageReceived, que se encarga de procesar el mensaje y que típicamente podría generar un evento informando a otras partes del sistema de la recepción de un mensaje. Ahora imaginemos que por razones de seguridad queremos supervisar los mensajes que lleguen y dar nuestra aprobación para que dichos mensajes se transmitan. Una opción sería modificar la clase Receiver con la lógica necesaria para implementar el nuevo sistema de seguridad, sin embargo, dicha clase puede ser bastante compleja ya de por si y además, puede que deseemos reutilizar dicha clase en otras partes que no requieran tan estricto control de seguridad. La interceptación de métodos nos proporciona una opción sin duda más conveniente para este caso. Generamos una clase, que llamaremos ParentalControlInterceptor la cual implementa el interface IInterceptor. public class ParentalControlInterceptor: IInterceptor{ #region IInterceptor Members public void Intercept(IInvocation invocation) { if (invocation.Method.Name == &quot;OnMessageReceived&quot;) { Console.WriteLine(&quot;Mensaje interceptado: &quot; + invocation.Arguments[0].ToString()); Console.Write(&quot;¿Aprueba el envío de este mensage (s/n)?&quot;); string response = Console.ReadLine(); if (response.ToUpper().StartsWith(&quot;S&quot;)) invocation.Proceed(); } } #endregion} En dicha clase comprobamos si el nombre del método interceptado coincide con el que nos interesa, en este caso es OnMessageReceived, y en caso afirmativo preguntamos si se desea aprobar la retransmisión del mensaje. El método OnMessageReceived de nuestra instancia de Receiver solo será invocado en el caso de que se apruebe la retransmisión. Por último, para que los métodos de nuestro receptor sean interceptados todo lo que tenemos que hacer es decorar la clase con el atributo Interceptor tal y como se muestra a continuación. [Interceptor(typeof(ParentalControlInterceptor))] public class Receiver{ public void WaitMessages() { while (true) { Console.Write(&quot;Escriba un mensaje: &quot;); string message = Console.ReadLine(); if (message == &quot;exit&quot; || message == &quot;quit&quot;) break; OnMessageReceived(message); } } protected virtual void OnMessageReceived(string message) { Console.WriteLine(&quot;Mensaje recibido: &quot; + message); } } Actualmente, para que la interceptación se produzca es un requisito que, o bien se registre el componente en el contenedor con un interface o bien que los métodos a interceptar sean marcados como virtuales. En la siguiente figura se observan los resultados que produce la interceptación tanto en el caso de que un mensaje se apruebe como en el contrario.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="la ciudadela" /><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">la ciudadela</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Interceptación de métodos con WindsorContainer</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Una de las ventajas de utilizar un contenedor como <a href="http://www.castleproject.org/" target="_blank">Windsor container</a> es la capacidad que nos proporciona para interceptar llamadas a métodos.</p>
+
+<p>Supongamos que tenemos un sistema que se dedica a esperar a la recepción de un mensaje y que está implementado por la clase Receiver.</p>
+<pre class="code"><span style="color: blue;">public class </span><span style="color: #2b91af;">Receiver</span>{
+    <span style="color: blue;">public void </span>WaitMessages()
+    {
+        <span style="color: blue;">while </span>(<span style="color: blue;">true</span>)
+        {
+            <span style="color: #2b91af;">Console</span>.Write(<span style="color: #a31515;">"Escriba un mensaje: "</span>);
+            <span style="color: blue;">string </span>message = <span style="color: #2b91af;">Console</span>.ReadLine();
+            <span style="color: blue;">if </span>(message == <span style="color: #a31515;">"exit" </span>|| message == <span style="color: #a31515;">"quit"</span>)
+                <span style="color: blue;">break</span>;
+            OnMessageReceived(message);
+        }
+    }
+
+    <span style="color: blue;">protected virtual void </span>OnMessageReceived(<span style="color: blue;">string </span>message)
+    {
+        <span style="color: #2b91af;">Console</span>.WriteLine(<span style="color: #a31515;">"Mensaje recibido: " </span>+ message);
+    }
+}</pre>
+<p>El receptor espera a que le llegue un mensaje y una vez recibido llama al método OnMessageReceived, que se encarga de procesar el mensaje y que típicamente podría generar un evento informando a otras partes del sistema de la recepción de un mensaje.</p>
+
+<p>Ahora imaginemos que por razones de seguridad queremos supervisar los mensajes que lleguen y dar nuestra aprobación para que dichos mensajes se transmitan.</p>
+
+<p>Una opción sería modificar la clase Receiver con la lógica necesaria para implementar el nuevo sistema de seguridad, sin embargo, dicha clase puede ser bastante compleja ya de por si y además, puede que deseemos reutilizar dicha clase en otras partes que no requieran tan estricto control de seguridad.</p>
+
+<p>La interceptación de métodos nos proporciona una opción sin duda más conveniente para este caso. Generamos una clase, que llamaremos ParentalControlInterceptor la cual implementa el interface IInterceptor.</p>
+<pre class="code"><span style="color: blue;">public class </span><span style="color: #2b91af;">ParentalControlInterceptor</span>: <span style="color: #2b91af;">IInterceptor</span>{
+    <span style="color: blue;">#region </span>IInterceptor Members
+
+    <span style="color: blue;">public void </span>Intercept(<span style="color: #2b91af;">IInvocation </span>invocation)
+    {
+        <span style="color: blue;">if </span>(invocation.Method.Name == <span style="color: #a31515;">"OnMessageReceived"</span>)
+        {
+            <span style="color: #2b91af;">Console</span>.WriteLine(<span style="color: #a31515;">"Mensaje interceptado: " </span>+ invocation.Arguments[0].ToString());
+            <span style="color: #2b91af;">Console</span>.Write(<span style="color: #a31515;">"¿Aprueba el envío de este mensage (s/n)?"</span>);
+            <span style="color: blue;">string </span>response = <span style="color: #2b91af;">Console</span>.ReadLine();
+            <span style="color: blue;">if </span>(response.ToUpper().StartsWith(<span style="color: #a31515;">"S"</span>))
+                invocation.Proceed();
+        }
+    }
+
+    <span style="color: blue;">#endregion</span>}</pre>
+<p>En dicha clase comprobamos si el nombre del método interceptado coincide con el que nos interesa, en este caso es OnMessageReceived, y en caso afirmativo preguntamos si se desea aprobar la retransmisión del mensaje. <strong>El método OnMessageReceived de nuestra instancia de Receiver solo será invocado en el caso de que se apruebe la retransmisión</strong>.</p>
+
+<p>Por último, para que los métodos de nuestro receptor sean interceptados todo lo que tenemos que hacer es decorar la clase con el atributo Interceptor tal y como se muestra a continuación.</p>
+<pre class="code">[<span style="color: #2b91af;">Interceptor</span>(<span style="color: blue;">typeof</span>(<span style="color: #2b91af;">ParentalControlInterceptor</span>))]
+<span style="color: blue;">public class </span><span style="color: #2b91af;">Receiver</span>{
+    <span style="color: blue;">public void </span>WaitMessages()
+    {
+        <span style="color: blue;">while </span>(<span style="color: blue;">true</span>)
+        {
+            <span style="color: #2b91af;">Console</span>.Write(<span style="color: #a31515;">"Escriba un mensaje: "</span>);
+            <span style="color: blue;">string </span>message = <span style="color: #2b91af;">Console</span>.ReadLine();
+            <span style="color: blue;">if </span>(message == <span style="color: #a31515;">"exit" </span>|| message == <span style="color: #a31515;">"quit"</span>)
+                <span style="color: blue;">break</span>;
+            OnMessageReceived(message);
+        }
+    }
+
+    <span style="color: blue;">protected virtual void </span>OnMessageReceived(<span style="color: blue;">string </span>message)
+    {
+        <span style="color: #2b91af;">Console</span>.WriteLine(<span style="color: #a31515;">"Mensaje recibido: " </span>+ message);
+    }
+}</pre>
+<p>Actualmente, para que la interceptación se produzca es un requisito que, o bien se registre el componente en el contenedor con un interface o bien que los métodos a interceptar sean marcados como virtuales.</p>
+
+<p>En la siguiente figura se observan los resultados que produce la interceptación tanto en el caso de que un mensaje se apruebe como en el contrario.</p>
+
+<p><img src="/images/07-11/2008-01-24-resultados-interceptacion.png" alt="Resultados de la interceptación" width="382" height="206" /></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">la ciudadela</h2>
+        <ul class="contact-list">
+          <li class="p-name">peancor</li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>Blog personal de Pedro Anuarbe Cortes (@peancor)
+</p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a href="https://twitter.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

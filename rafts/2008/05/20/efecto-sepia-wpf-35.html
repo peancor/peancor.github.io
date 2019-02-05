@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Efecto Sepia con WPF 3.5 SP1 | la ciudadela</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Efecto Sepia con WPF 3.5 SP1" />
+<meta name="author" content="peancor" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Una de las novedades introducidas en el service pack 1 de la versión 3.5 de Windows Presentation Foundation es la posibilidad de utilizar ‘Pixel shaders’ personalizados como efectos para cualquier componente visual. En los comienzos de la fotografía, se aplicaba el tonado sepia a las fotografías en blanco y negro, debido a que dicho proceso hacía más duraderas a las fotografía, y es por ello que muchas de las fotografías antiguas tienen ese característico aspecto basado en tonos marrones. El siguiente fragmento de código define un &#39;pixel shader&#39;, el cual al aplicarle como efecto a cualquier elemento Visual de una aplicación WPF, le dará esa característica tonalidad sepia. La variable lumaCoeffs es un vector cuyo producto escalar con el vector que define los valores RGB en una pixel de la imagen, nos da el valor de luminancia que corresponde a ese punto. El valor de luminancia se utiliza para posteriormente obtener el color en tono sepia correspondiente a ese valor utilizando la función lerp, que se utiliza para hacer una interpolación lineal entre los dos colores que definen los &#39;extremos&#39; de la gama de tonalidades sepia. Por el momento, no podemos utilizar el efecto directamente desde Visual Studio y se necesita compilarle primero utilizando la utilidad fxc del SDK de DirectX. Si hemos guardado el código de la figura anterior en un fichero con el nombre sepia.fx podemos compilarle a un archivo sepia.ps que se podrá utilizar directamente desde WPF de la siguiente manera: fxc  /T ps_2_0 /E main /Fosepia.ps sepia.fx Una vez compilado el efecto podemos utilizarlo derivando una clase de ShaderEffect llamada, por ejemplo, SepiaEffect, y asignado el archivo sepia.ps a su propiedad PixelShader. Dicho archivo, habrá tenido que ser incluido previamente en el proyecto de Visual Studio y se deberá haber establecido su ‘build action’ como resource. Para más detalles consultar el código fuente que acompaña a este artículo, que utiliza el efecto tal y como se muestra en la siguiente figura. Referencia: Blog de Greg Schechter" />
+<meta property="og:description" content="Una de las novedades introducidas en el service pack 1 de la versión 3.5 de Windows Presentation Foundation es la posibilidad de utilizar ‘Pixel shaders’ personalizados como efectos para cualquier componente visual. En los comienzos de la fotografía, se aplicaba el tonado sepia a las fotografías en blanco y negro, debido a que dicho proceso hacía más duraderas a las fotografía, y es por ello que muchas de las fotografías antiguas tienen ese característico aspecto basado en tonos marrones. El siguiente fragmento de código define un &#39;pixel shader&#39;, el cual al aplicarle como efecto a cualquier elemento Visual de una aplicación WPF, le dará esa característica tonalidad sepia. La variable lumaCoeffs es un vector cuyo producto escalar con el vector que define los valores RGB en una pixel de la imagen, nos da el valor de luminancia que corresponde a ese punto. El valor de luminancia se utiliza para posteriormente obtener el color en tono sepia correspondiente a ese valor utilizando la función lerp, que se utiliza para hacer una interpolación lineal entre los dos colores que definen los &#39;extremos&#39; de la gama de tonalidades sepia. Por el momento, no podemos utilizar el efecto directamente desde Visual Studio y se necesita compilarle primero utilizando la utilidad fxc del SDK de DirectX. Si hemos guardado el código de la figura anterior en un fichero con el nombre sepia.fx podemos compilarle a un archivo sepia.ps que se podrá utilizar directamente desde WPF de la siguiente manera: fxc  /T ps_2_0 /E main /Fosepia.ps sepia.fx Una vez compilado el efecto podemos utilizarlo derivando una clase de ShaderEffect llamada, por ejemplo, SepiaEffect, y asignado el archivo sepia.ps a su propiedad PixelShader. Dicho archivo, habrá tenido que ser incluido previamente en el proyecto de Visual Studio y se deberá haber establecido su ‘build action’ como resource. Para más detalles consultar el código fuente que acompaña a este artículo, que utiliza el efecto tal y como se muestra en la siguiente figura. Referencia: Blog de Greg Schechter" />
+<link rel="canonical" href="http://localhost:4000/2008/05/20/efecto-sepia-wpf-35.html" />
+<meta property="og:url" content="http://localhost:4000/2008/05/20/efecto-sepia-wpf-35.html" />
+<meta property="og:site_name" content="la ciudadela" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2008-05-20T00:00:00+02:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2008/05/20/efecto-sepia-wpf-35.html"},"author":{"@type":"Person","name":"peancor"},"@type":"BlogPosting","url":"http://localhost:4000/2008/05/20/efecto-sepia-wpf-35.html","headline":"Efecto Sepia con WPF 3.5 SP1","dateModified":"2008-05-20T00:00:00+02:00","datePublished":"2008-05-20T00:00:00+02:00","description":"Una de las novedades introducidas en el service pack 1 de la versión 3.5 de Windows Presentation Foundation es la posibilidad de utilizar ‘Pixel shaders’ personalizados como efectos para cualquier componente visual. En los comienzos de la fotografía, se aplicaba el tonado sepia a las fotografías en blanco y negro, debido a que dicho proceso hacía más duraderas a las fotografía, y es por ello que muchas de las fotografías antiguas tienen ese característico aspecto basado en tonos marrones. El siguiente fragmento de código define un &#39;pixel shader&#39;, el cual al aplicarle como efecto a cualquier elemento Visual de una aplicación WPF, le dará esa característica tonalidad sepia. La variable lumaCoeffs es un vector cuyo producto escalar con el vector que define los valores RGB en una pixel de la imagen, nos da el valor de luminancia que corresponde a ese punto. El valor de luminancia se utiliza para posteriormente obtener el color en tono sepia correspondiente a ese valor utilizando la función lerp, que se utiliza para hacer una interpolación lineal entre los dos colores que definen los &#39;extremos&#39; de la gama de tonalidades sepia. Por el momento, no podemos utilizar el efecto directamente desde Visual Studio y se necesita compilarle primero utilizando la utilidad fxc del SDK de DirectX. Si hemos guardado el código de la figura anterior en un fichero con el nombre sepia.fx podemos compilarle a un archivo sepia.ps que se podrá utilizar directamente desde WPF de la siguiente manera: fxc  /T ps_2_0 /E main /Fosepia.ps sepia.fx Una vez compilado el efecto podemos utilizarlo derivando una clase de ShaderEffect llamada, por ejemplo, SepiaEffect, y asignado el archivo sepia.ps a su propiedad PixelShader. Dicho archivo, habrá tenido que ser incluido previamente en el proyecto de Visual Studio y se deberá haber establecido su ‘build action’ como resource. Para más detalles consultar el código fuente que acompaña a este artículo, que utiliza el efecto tal y como se muestra en la siguiente figura. Referencia: Blog de Greg Schechter","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="la ciudadela" /><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">la ciudadela</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Efecto Sepia con WPF 3.5 SP1</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Una de las novedades introducidas en el service pack 1 de la versión 3.5 de Windows Presentation Foundation es la posibilidad de utilizar ‘<a href="http://es.wikipedia.org/wiki/Pixel_Shader">Pixel shaders</a>’ personalizados como efectos para cualquier componente visual.</p>
+<p class="MsoNormal">En los comienzos de la fotografía, se aplicaba el tonado sepia a las fotografías en blanco y negro, debido a que dicho proceso hacía más duraderas a las fotografía, y es por ello que muchas de las fotografías antiguas tienen ese característico aspecto basado en tonos marrones.</p>
+<p class="MsoNormal">El siguiente fragmento de código define un 'pixel shader', el cual al aplicarle como efecto a cualquier elemento Visual de una aplicación WPF, le dará esa característica tonalidad sepia.</p>
+<p class="MsoNormal"><img src="/images/07-11/2008-05-codigo-shader-sepia.png" alt="pixel shader para el efecto sepia" width="382" height="471" /></p>
+<p class="MsoNormal">La variable lumaCoeffs es un vector cuyo producto escalar con el vector que define los valores RGB en una pixel de la imagen, nos da el valor de <a href="http://es.wikipedia.org/wiki/Luminancia">luminancia </a>que corresponde a ese punto. El valor de luminancia se utiliza para posteriormente obtener el color en tono sepia correspondiente a ese valor utilizando la función lerp, que se utiliza para hacer una interpolación lineal entre los dos colores que definen los 'extremos' de la gama de tonalidades sepia.</p>
+<p class="MsoNormal">Por el momento, no podemos utilizar el efecto directamente desde Visual Studio y se necesita compilarle primero utilizando la utilidad fxc del SDK de DirectX. Si hemos guardado el código de la figura anterior en un fichero con el nombre sepia.fx podemos compilarle a un archivo sepia.ps que se podrá utilizar directamente desde WPF de la siguiente manera:</p>
+
+<ul>
+	<li><span style="font-size: 11pt; line-height: 115%; font-family: 'Calibri','sans-serif';" lang="EN-US">fxc<span>  </span>/T ps_2_0 /E main /Fosepia.ps sepia.fx</span></li>
+</ul>
+<p>Una vez compilado el efecto podemos utilizarlo derivando una clase de ShaderEffect llamada, por ejemplo, SepiaEffect, y asignado el archivo sepia.ps a su propiedad PixelShader. Dicho archivo, habrá tenido que ser incluido previamente en el proyecto de Visual Studio y se deberá haber establecido su ‘build action’ como resource.</p>
+<p class="MsoNormal">Para más detalles consultar el código fuente que acompaña a este artículo, que utiliza el efecto tal y como se muestra en la siguiente figura.</p>
+<p><img src="/images/07-11/2008-05-demo-efecto-sepia.jpg" alt="Demo del efecto sepia" width="425" height="463" /></p>
+
+<p>Referencia: <span class="entry-author-name"><a href="http://blogs.msdn.com/greg_schechter/archive/2008/05/12/a-series-on-gpu-based-effects-for-wpf.aspx">Blog de Greg Schechter</a>
+</span></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">la ciudadela</h2>
+        <ul class="contact-list">
+          <li class="p-name">peancor</li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>Blog personal de Pedro Anuarbe Cortes (@peancor)
+</p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a href="https://twitter.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

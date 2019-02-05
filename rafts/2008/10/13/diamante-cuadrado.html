@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Diamante - Cuadrado | la ciudadela</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Diamante - Cuadrado" />
+<meta name="author" content="peancor" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Las extensiones de terreno son uno de los fenómenos naturales más comúnmente representados gráficamente por computador. El algoritmo Diamond-Square (Diamante-Cuadrado) es un método utilizado para la generación de terreno de forma aleatoria. Fue desarrollado por Loren Carpenter, cofundador y científico jefe de Pixar, para ser usado en el modelado de una superficie planetaria. Los resultados producidos por dicho método se pueden observar en el siguiente video, generado por un programa cuyo código fuente puede encontrar adjunto a este artículo. Para modelar el terreno se comienza con una matriz de dimensiones mxn, donde típicamente m será igual a n ya que esto simplifica las cosas. Las dimensiones de la matriz deberán ser potencia de dos más 1, es decir, 33x33, 65x65, 129x129, 257x257, etc. Los valores de la matriz se interpretan como la altura que tiene el terreno en ese punto, por lo que un valor en la posición 30,30 de 65 significa que en la posición 30,30 del terreno, su altura es de 65 unidades. Este tipo de matrices se conocen como ‘heightmap’ o mapa de alturas. La siguiente figura, extraída de la publicación original, muestra el proceso de generación de las alturas para una matriz de 5x5. El proceso comienza con las cuatro esquinas, marcadas como 0, es decir, con un ‘cuadrado’ cuyos valores de altura son inicializados a los valores de altura que deseemos, en nuestro caso serán inicializados con el valor 0. A continuación, se utilizan dichos valores para calcular la altura del punto 1a. Las etapas del algoritmo marcadas como a (1a, 2a, 3a, etc.) forman la parte ‘diamante’ del proceso, ya que si trazamos las diagonales desde cada punto a cada una de las esquinas del ‘cuadrado’ se formara un patrón de rombos, símbolo que habitualmente se utiliza para representar a los diamantes. Después se procede a la etapa ‘cuadrado’ por lo que se toman las esquinas de cada uno de los rombos generados para calcular un nuevo valor para su centro, puntos marcados como 1b. Una vez realizadas las etapas diamante y cuadrado podemos observar que la matriz o rejilla ha quedado dividida en 4 cuadrados. El algoritmo continúa entonces con una nueva fase diamante-cuadrado, marcada como 2ª y 2b, solo que esta vez partiremos de 4 cuadrados en lugar de 1 y a cuya resolución la rejilla quedará dividida en 16 cuadrados. En este caso el proceso ha concluido porque todos los puntos de la matriz han sido asignados. Si hubiéramos comenzado con una matriz de dimensiones mayores el proceso continuaría con nuevas etapas diamante-cuadrado hasta que quedase totalmente dividida y todos sus puntos hubiesen sido asignados con su correspondiente valor de altura. Para calcular la altura de cada punto se utiliza el promedio de los valores circundantes, es decir, los cuadrados en la etapa diamante, y las esquinas de los rombos en la etapa cuadrado. A dicho valor, posteriormente se le añade un valor aleatorio (entre –d y +d) que estará limitado por unos parámetros. Puede observar los detalles en la implementación adjunta a este artículo. Dicha implementación está basada en el programa de Paul Martz publicada en Generating Random Fractal Terrain y utiliza XNA para la representación grafica." />
+<meta property="og:description" content="Las extensiones de terreno son uno de los fenómenos naturales más comúnmente representados gráficamente por computador. El algoritmo Diamond-Square (Diamante-Cuadrado) es un método utilizado para la generación de terreno de forma aleatoria. Fue desarrollado por Loren Carpenter, cofundador y científico jefe de Pixar, para ser usado en el modelado de una superficie planetaria. Los resultados producidos por dicho método se pueden observar en el siguiente video, generado por un programa cuyo código fuente puede encontrar adjunto a este artículo. Para modelar el terreno se comienza con una matriz de dimensiones mxn, donde típicamente m será igual a n ya que esto simplifica las cosas. Las dimensiones de la matriz deberán ser potencia de dos más 1, es decir, 33x33, 65x65, 129x129, 257x257, etc. Los valores de la matriz se interpretan como la altura que tiene el terreno en ese punto, por lo que un valor en la posición 30,30 de 65 significa que en la posición 30,30 del terreno, su altura es de 65 unidades. Este tipo de matrices se conocen como ‘heightmap’ o mapa de alturas. La siguiente figura, extraída de la publicación original, muestra el proceso de generación de las alturas para una matriz de 5x5. El proceso comienza con las cuatro esquinas, marcadas como 0, es decir, con un ‘cuadrado’ cuyos valores de altura son inicializados a los valores de altura que deseemos, en nuestro caso serán inicializados con el valor 0. A continuación, se utilizan dichos valores para calcular la altura del punto 1a. Las etapas del algoritmo marcadas como a (1a, 2a, 3a, etc.) forman la parte ‘diamante’ del proceso, ya que si trazamos las diagonales desde cada punto a cada una de las esquinas del ‘cuadrado’ se formara un patrón de rombos, símbolo que habitualmente se utiliza para representar a los diamantes. Después se procede a la etapa ‘cuadrado’ por lo que se toman las esquinas de cada uno de los rombos generados para calcular un nuevo valor para su centro, puntos marcados como 1b. Una vez realizadas las etapas diamante y cuadrado podemos observar que la matriz o rejilla ha quedado dividida en 4 cuadrados. El algoritmo continúa entonces con una nueva fase diamante-cuadrado, marcada como 2ª y 2b, solo que esta vez partiremos de 4 cuadrados en lugar de 1 y a cuya resolución la rejilla quedará dividida en 16 cuadrados. En este caso el proceso ha concluido porque todos los puntos de la matriz han sido asignados. Si hubiéramos comenzado con una matriz de dimensiones mayores el proceso continuaría con nuevas etapas diamante-cuadrado hasta que quedase totalmente dividida y todos sus puntos hubiesen sido asignados con su correspondiente valor de altura. Para calcular la altura de cada punto se utiliza el promedio de los valores circundantes, es decir, los cuadrados en la etapa diamante, y las esquinas de los rombos en la etapa cuadrado. A dicho valor, posteriormente se le añade un valor aleatorio (entre –d y +d) que estará limitado por unos parámetros. Puede observar los detalles en la implementación adjunta a este artículo. Dicha implementación está basada en el programa de Paul Martz publicada en Generating Random Fractal Terrain y utiliza XNA para la representación grafica." />
+<link rel="canonical" href="http://localhost:4000/2008/10/13/diamante-cuadrado.html" />
+<meta property="og:url" content="http://localhost:4000/2008/10/13/diamante-cuadrado.html" />
+<meta property="og:site_name" content="la ciudadela" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2008-10-13T00:00:00+02:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2008/10/13/diamante-cuadrado.html"},"author":{"@type":"Person","name":"peancor"},"@type":"BlogPosting","url":"http://localhost:4000/2008/10/13/diamante-cuadrado.html","headline":"Diamante - Cuadrado","dateModified":"2008-10-13T00:00:00+02:00","datePublished":"2008-10-13T00:00:00+02:00","description":"Las extensiones de terreno son uno de los fenómenos naturales más comúnmente representados gráficamente por computador. El algoritmo Diamond-Square (Diamante-Cuadrado) es un método utilizado para la generación de terreno de forma aleatoria. Fue desarrollado por Loren Carpenter, cofundador y científico jefe de Pixar, para ser usado en el modelado de una superficie planetaria. Los resultados producidos por dicho método se pueden observar en el siguiente video, generado por un programa cuyo código fuente puede encontrar adjunto a este artículo. Para modelar el terreno se comienza con una matriz de dimensiones mxn, donde típicamente m será igual a n ya que esto simplifica las cosas. Las dimensiones de la matriz deberán ser potencia de dos más 1, es decir, 33x33, 65x65, 129x129, 257x257, etc. Los valores de la matriz se interpretan como la altura que tiene el terreno en ese punto, por lo que un valor en la posición 30,30 de 65 significa que en la posición 30,30 del terreno, su altura es de 65 unidades. Este tipo de matrices se conocen como ‘heightmap’ o mapa de alturas. La siguiente figura, extraída de la publicación original, muestra el proceso de generación de las alturas para una matriz de 5x5. El proceso comienza con las cuatro esquinas, marcadas como 0, es decir, con un ‘cuadrado’ cuyos valores de altura son inicializados a los valores de altura que deseemos, en nuestro caso serán inicializados con el valor 0. A continuación, se utilizan dichos valores para calcular la altura del punto 1a. Las etapas del algoritmo marcadas como a (1a, 2a, 3a, etc.) forman la parte ‘diamante’ del proceso, ya que si trazamos las diagonales desde cada punto a cada una de las esquinas del ‘cuadrado’ se formara un patrón de rombos, símbolo que habitualmente se utiliza para representar a los diamantes. Después se procede a la etapa ‘cuadrado’ por lo que se toman las esquinas de cada uno de los rombos generados para calcular un nuevo valor para su centro, puntos marcados como 1b. Una vez realizadas las etapas diamante y cuadrado podemos observar que la matriz o rejilla ha quedado dividida en 4 cuadrados. El algoritmo continúa entonces con una nueva fase diamante-cuadrado, marcada como 2ª y 2b, solo que esta vez partiremos de 4 cuadrados en lugar de 1 y a cuya resolución la rejilla quedará dividida en 16 cuadrados. En este caso el proceso ha concluido porque todos los puntos de la matriz han sido asignados. Si hubiéramos comenzado con una matriz de dimensiones mayores el proceso continuaría con nuevas etapas diamante-cuadrado hasta que quedase totalmente dividida y todos sus puntos hubiesen sido asignados con su correspondiente valor de altura. Para calcular la altura de cada punto se utiliza el promedio de los valores circundantes, es decir, los cuadrados en la etapa diamante, y las esquinas de los rombos en la etapa cuadrado. A dicho valor, posteriormente se le añade un valor aleatorio (entre –d y +d) que estará limitado por unos parámetros. Puede observar los detalles en la implementación adjunta a este artículo. Dicha implementación está basada en el programa de Paul Martz publicada en Generating Random Fractal Terrain y utiliza XNA para la representación grafica.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="la ciudadela" /><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">la ciudadela</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Diamante - Cuadrado</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Las extensiones de terreno son uno de los fenómenos naturales más comúnmente representados gráficamente por computador.</p>
+
+<p>El algoritmo Diamond-Square (Diamante-Cuadrado) es un método utilizado para la generación de terreno de forma aleatoria. Fue desarrollado por Loren Carpenter, cofundador y científico jefe de <a target="_blank" href="http://es.wikipedia.org/wiki/Pixar">Pixar</a>, para ser usado en el modelado de una superficie planetaria.</p>
+
+<p>Los resultados producidos por dicho método se pueden observar en el siguiente video, generado por un programa cuyo código fuente puede encontrar adjunto a este artículo.</p>
+
+<div class="flex-video">
+  <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtube.com/embed/rnphYLrWJN8" frameborder="0"></iframe>
+</div>
+
+<p>Para modelar el terreno se comienza con una matriz de dimensiones mxn, donde típicamente m será igual a n ya que esto simplifica las cosas. Las dimensiones de la matriz deberán ser potencia de dos más 1, es decir, 33x33, 65x65, 129x129, 257x257, etc.</p>
+
+<p>Los valores de la matriz se interpretan como la altura que tiene el terreno en ese punto, por lo que un valor en la posición 30,30 de 65 significa que en la posición 30,30 del terreno, su altura es de 65 unidades. Este tipo de matrices se conocen como ‘heightmap’ o mapa de alturas.</p>
+
+<p>La siguiente figura, extraída de la <a target="_blank" href="http://portal.acm.org/citation.cfm?doid=358523.358553">publicación original</a>, muestra el proceso de generación de las alturas para una matriz de 5x5.</p>
+
+<p><img src="/images/07-11/2008-10-diamondsquare-esquema-ffc82.png" /></p>
+
+<p>El proceso comienza con las cuatro esquinas, marcadas como 0, es decir, con un ‘cuadrado’ cuyos valores de altura son inicializados a los valores de altura que deseemos, en nuestro caso serán inicializados con el valor 0.</p>
+
+<p>A continuación, se utilizan dichos valores para calcular la altura del punto 1a. Las etapas del algoritmo marcadas como a (1a, 2a, 3a, etc.) forman la parte ‘diamante’ del proceso, ya que si trazamos las diagonales desde cada punto a cada una de las esquinas del ‘cuadrado’ se formara un patrón de rombos, símbolo que habitualmente se utiliza para representar a los diamantes.</p>
+
+<p>Después se procede a la etapa ‘cuadrado’ por lo que se toman las esquinas de cada uno de los rombos generados para calcular un nuevo valor para su centro, puntos marcados como 1b.</p>
+
+<p>Una vez realizadas las etapas diamante y cuadrado podemos observar que la matriz o rejilla ha quedado dividida en 4 cuadrados.</p>
+
+<p>El algoritmo continúa entonces con una nueva fase diamante-cuadrado, marcada como 2ª y 2b, solo que esta vez partiremos de 4 cuadrados en lugar de 1 y a cuya resolución la rejilla quedará dividida en 16 cuadrados.</p>
+
+<p>En este caso el proceso ha concluido porque todos los puntos de la matriz han sido asignados. Si hubiéramos comenzado con una matriz de dimensiones mayores el proceso continuaría con nuevas etapas diamante-cuadrado hasta que quedase totalmente dividida y todos sus puntos hubiesen sido asignados con su correspondiente valor de altura.</p>
+
+<p>Para calcular la altura de cada punto se utiliza el promedio de los valores circundantes, es decir, los cuadrados en la etapa diamante, y las esquinas de los rombos en la etapa cuadrado. A dicho valor, posteriormente se le añade un valor aleatorio (entre –d y +d) que estará limitado por unos parámetros.</p>
+
+<p>Puede observar los detalles en la implementación adjunta a este artículo. Dicha implementación está basada en el programa de Paul Martz publicada en <a href="http://www.gameprogrammer.com/fractal.html">Generating Random Fractal Terrain</a> y utiliza XNA para la representación grafica.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">la ciudadela</h2>
+        <ul class="contact-list">
+          <li class="p-name">peancor</li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>Blog personal de Pedro Anuarbe Cortes (@peancor)
+</p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a href="https://twitter.com/peancor" title="peancor"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
